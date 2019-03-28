@@ -1,2 +1,2 @@
 # Serverless Architectures with Azure
-- [Prerequisites](Session Prerequisites)
+- [Prerequisites](Serverless-Architectures-with-Azure/Session%20%Prerequisites/Readme.md)
