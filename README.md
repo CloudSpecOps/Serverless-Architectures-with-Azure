@@ -1,1 +1,2 @@
-# Serverless-Architectures-with-Azure
+# Serverless Architectures with Azure
+- [Prerequisites](Session Prerequisites)
