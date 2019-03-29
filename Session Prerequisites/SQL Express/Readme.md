@@ -15,6 +15,7 @@
 #### Remove the checkmark to turn of compression in this directory only as you see below.
 ![Alt Text](SQL-Express-step-6.png)
 
+#### Then continue with the install
 ![Alt Text](SQL-Express-step-7.png)
 
 #### Male note of your SQL Express instance name and close installer
