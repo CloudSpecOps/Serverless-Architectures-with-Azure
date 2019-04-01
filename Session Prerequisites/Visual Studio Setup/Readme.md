@@ -6,4 +6,4 @@
 #### Add Azure Logic Apps Tools
 
 ###### Goto Tools > Extensions and Updates in Visual Studio
-![Alt Text](Azure-sdk-step-1.png)
+![Alt Text](Visual-Studio-Logic-Apps-Tools.png)
