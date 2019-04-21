@@ -1,3 +1,6 @@
+using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -11,18 +14,26 @@ namespace ServerlessFunctions
     public static class TelemetryGet
     {
         [FunctionName("Telemetry-Get")]
-        public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]HttpRequestMessage req, TraceWriter log)
+        public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get",  Route = null)]HttpRequestMessage req, TraceWriter log)
         {
             log.Info("C# HTTP trigger function processed a request.");
             string name = null;
 
-            // Get request body
-            dynamic data = await req.Content.ReadAsAsync<object>();
-            name = data?.name;
+            // Get Conntection String
+            var connectionString = Environment.GetEnvironmentVariable("SqlConnection");
 
-            return name == null
-                ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a telemetry data as JSON in the request body")
-                : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("usp_SelectAllDeviceTelemetry", conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var dataReader = await cmd.ExecuteReaderAsync();
+
+            }
+
+            return req.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

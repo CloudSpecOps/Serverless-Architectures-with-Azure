@@ -43,7 +43,7 @@ namespace ServerlessFunctions
                     cmd.Parameters.Add(new SqlParameter("@Name", data.name));
                     cmd.Parameters.Add(new SqlParameter("@Value", data.value));
 
-                    var reader = cmd.ExecuteReader();
+                    var recordChange = cmd.ExecuteNonQuery();
                 }
             }
 
